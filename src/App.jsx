@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { decrement, increment } from './features/counters/counterSlice';
 import Posts from './components/Posts';
 import BookList from './components/BookList';
+import BookForm from './components/BookForm';
 
 function App() {
   const counters = useSelector((state) => state.counters);
@@ -36,6 +37,7 @@ function App() {
 
       <h1 className="mt-20">ANISUL ISLAM</h1>
       <BookList />
+      <BookForm />
     </>
   );
 }
