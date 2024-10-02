@@ -5,8 +5,10 @@ const BookList = () => {
   const books = useSelector((state) => state.booksR.books);
   const dispatch = useDispatch();
 
+  console.log('booksState=> ', books);
+
   const handleDelete = (id) => {
-    console.log('first', id);
+    console.log('deleteId=> ', id);
     dispatch(deleteBook(id));
   };
   return (

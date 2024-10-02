@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { nanoid } from 'nanoid';
 
 const initialState = {
   books: [
-    { id: 1, title: 'Test book one', author: 'Author one', price: 250, quantity: 2 },
-    { id: 2, title: 'Test book two', author: 'Author two', price: 450, quantity: 4 },
-    { id: 3, title: 'Test book three', author: 'Author three', price: 450, quantity: 3 },
-    { id: 4, title: 'Test book four', author: 'Author four', price: 850, quantity: 5 },
+    { id: nanoid(), title: 'Test book one', author: 'Author one', price: 250, quantity: 2 },
+    { id: nanoid(), title: 'Test book two', author: 'Author two', price: 450, quantity: 4 },
+    { id: nanoid(), title: 'Test book three', author: 'Author three', price: 450, quantity: 3 },
+    { id: nanoid(), title: 'Test book four', author: 'Author four', price: 850, quantity: 5 },
   ],
 };
 
@@ -18,8 +19,9 @@ const bookSlice = createSlice({
     },
     addBook: (state, action) => {
       state.books.push({
+        // id: state.books.length + 1,
+        id: nanoid(),
         ...action.payload,
-        id: state.books.length + 1,
       });
     },
   },
