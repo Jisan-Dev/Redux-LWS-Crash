@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteBook } from '../features/books/booksSlice';
 
-const BookList = () => {
+const BookList = ({ handleEdit }) => {
   const books = useSelector((state) => state.booksR.books);
   const dispatch = useDispatch();
 
@@ -21,6 +22,9 @@ const BookList = () => {
               {book.title} by {book.author} - ${book.price} - {book.quantity}pcs -{' '}
               <button onClick={() => handleDelete(book.id)} className="px-3 py-1 bg-stone-100 text-black">
                 Delete
+              </button>
+              <button onClick={() => handleEdit(book)} className="px-3 py-1 bg-stone-100 text-black">
+                Edit
               </button>
             </li>
           </ul>

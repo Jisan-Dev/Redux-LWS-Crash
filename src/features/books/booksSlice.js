@@ -17,6 +17,19 @@ const bookSlice = createSlice({
     deleteBook: (state, action) => {
       state.books = state.books.filter((book) => book.id !== action.payload);
     },
+    updateBook: (state, action) => {
+      console.log('action.payload=> ', action.payload);
+      const { id, title, author, price, quantity } = action.payload;
+      const existingBook = state.books.find((book) => book.id === id);
+      // const idx = state.books.findIndex((book) => book.id === id);
+      // console.log(idx);
+      if (existingBook) {
+        existingBook.title = title;
+        existingBook.author = author;
+        existingBook.price = price;
+        existingBook.quantity = quantity;
+      }
+    },
     addBook: (state, action) => {
       state.books.push({
         // id: state.books.length + 1,
@@ -28,4 +41,4 @@ const bookSlice = createSlice({
 });
 
 export default bookSlice.reducer;
-export const { deleteBook, addBook } = bookSlice.actions;
+export const { deleteBook, addBook, updateBook } = bookSlice.actions;

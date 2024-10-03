@@ -6,8 +6,10 @@ import { decrement, increment } from './features/counters/counterSlice';
 import Posts from './components/Posts';
 import BookList from './components/BookList';
 import BookForm from './components/BookForm';
+import { useState } from 'react';
 
 function App() {
+  const [bookToEdit, setBookToEdit] = useState(null);
   const counters = useSelector((state) => state.counters);
   const dispatch = useDispatch();
 
@@ -19,6 +21,10 @@ function App() {
 
   const handleDecrement = (counterId) => {
     dispatch(decrement(counterId));
+  };
+
+  const handleEdit = (book) => {
+    setBookToEdit(book);
   };
 
   return (
@@ -36,8 +42,8 @@ function App() {
       <Posts />
 
       <h1 className="mt-20">ANISUL ISLAM</h1>
-      <BookList />
-      <BookForm />
+      <BookList handleEdit={handleEdit} />
+      <BookForm bookToEdit={bookToEdit} />
     </>
   );
 }
